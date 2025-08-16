@@ -1,9 +1,8 @@
-<script setup>
-import HeaderMenu from './Header.vue'
+<script setup> 
+import HomePage from './HomePage.vue';
 </script>
 
-
 <template>
-  <HeaderMenu /> 
+  <HomePage />
 </template>
  
