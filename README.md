@@ -1,5 +1,18 @@
-# Vue 3 + TypeScript + Vite
+# Books Store VueJS
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+TThe server provides an API for the application's core operations, as well as a Swagger endpoint for easy documentation. https://circlesoftware-be-4104a8d601d4.herokuapp.com/books
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Getting Started
+
+-   Clone the repository
+-   Install its dependencies using npm:
+
+```bash
+$ npm install
+```
+
+-   Run the development server locally with the following command:
+
+```bash
+$ npm run dev
+```
