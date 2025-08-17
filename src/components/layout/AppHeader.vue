@@ -13,7 +13,11 @@
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/shops">Bookshop</router-link></li>
             <li><router-link to="/about">About</router-link></li>
-             <li class="nav-right"><router-link to="/cart">My Cart <span class="cart-badge">2</span></router-link></li>
+            <li class="nav-right">
+              <router-link to="/cart"
+                >My Cart <span class="cart-badge">2</span></router-link
+              >
+            </li>
           </ul>
         </div>
         <div class="mobile-nav-toggle" @click="toggleMenu">
@@ -29,6 +33,7 @@
 <script lang="ts">
  import { defineComponent } from 'vue';
 import logoUrl from '../../assets/logo.png';
+import { createMenuHelpers } from '../../helpers/menu';
 
  export default defineComponent({
    name: 'AppHeader',
@@ -36,31 +41,23 @@ import logoUrl from '../../assets/logo.png';
      return {
        isMenuOpen: false,
        isDropdownOpen: false,
-       logoUrl
+       logoUrl,
+       cleanupClickOutside: null as (() => void) | null,
      }
    },
-   methods: {
-     toggleMenu() {
-       this.isMenuOpen = !this.isMenuOpen;
-     },
-     closeMenu() {
-       this.isMenuOpen = false;
-       this.isDropdownOpen = false;
-     },
-     showDropdown() {
-       this.isDropdownOpen = true;
-     },
-     hideDropdown() {
-       this.isDropdownOpen = false;
-     },
-   },
+   created() {
+    const helpers = createMenuHelpers(this.$data);
+    Object.assign(this, helpers);
+  },
    mounted() {
-     document.addEventListener('click', (e) => {
-       if (!this.$el.contains(e.target)) {
-         this.closeMenu();
-       }
-     });
-   }
+    const helpers = createMenuHelpers(this.$data);
+    this.cleanupClickOutside = helpers.setupClickOutside(this.$el as HTMLElement);
+  },
+  beforeUnmount() {
+    if (this.cleanupClickOutside) {
+      this.cleanupClickOutside();
+    }
+  }
  });
 </script>
 
@@ -115,8 +112,8 @@ import logoUrl from '../../assets/logo.png';
   padding: 0 1rem;
 }
 .nav-menu li.nav-right {
-    position: absolute;
-    right: 1rem;
+  position: absolute;
+  right: 1rem;
 }
 .nav-item {
   position: relative;
@@ -146,11 +143,11 @@ import logoUrl from '../../assets/logo.png';
   top: 1rem;
 }
 .cart-badge {
-    padding: 0.3rem;
-    font-size: small;
-    border-radius: 0.5rem;
-    background-color: #007bff;
-    color: white;
+  padding: 0.3rem;
+  font-size: small;
+  border-radius: 0.5rem;
+  background-color: #007bff;
+  color: white;
 }
 .bar {
   width: 25px;
@@ -197,27 +194,5 @@ import logoUrl from '../../assets/logo.png';
   .mobile-nav-toggle {
     display: flex;
   }
-
-  .mobile-nav-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .mobile-nav-toggle.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .mobile-nav-toggle.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-}
-
-.bar.active:nth-child(2) {
-  opacity: 0;
-}
-.bar.active:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-.bar.active:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
 }
 </style>
