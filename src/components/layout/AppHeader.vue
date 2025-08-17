@@ -53,9 +53,17 @@ import { createMenuHelpers } from '../../helpers/menu';
     const helpers = createMenuHelpers(this.$data);
     this.cleanupClickOutside = helpers.setupClickOutside(this.$el as HTMLElement);
   },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    }
+  },
   beforeUnmount() {
     if (this.cleanupClickOutside) {
       this.cleanupClickOutside();
+    }
+     if (this.toggleMenu) {
+      this.toggleMenu();
     }
   }
  });

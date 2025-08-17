@@ -5,7 +5,7 @@
         <h1 class="banner-title stylish-title">Read and Learn!</h1>
       </div>
     </div>
-    <ContentWrapper title="Featured Books" marginTop="0">
+    <ContentWrapper title="Featured Books" marginTop="0" classPage="homePage">
       <p>This is the homepage</p>
     </ContentWrapper>
   </section>

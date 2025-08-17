@@ -4,20 +4,8 @@ export interface IMenuState {
 }
 
 export const createMenuHelpers = (state: IMenuState) => {
-  const toggleMenu = () => {
-    state.isMenuOpen = !state.isMenuOpen;
-  };
-
   const closeMenu = () => {
     state.isMenuOpen = false;
-    state.isDropdownOpen = false;
-  };
-
-  const showDropdown = () => {
-    state.isDropdownOpen = true;
-  };
-
-  const hideDropdown = () => {
     state.isDropdownOpen = false;
   };
 
@@ -34,10 +22,7 @@ export const createMenuHelpers = (state: IMenuState) => {
   };
 
   return {
-    toggleMenu,
     closeMenu,
-    showDropdown,
-    hideDropdown,
     setupClickOutside
   };
 };
