@@ -1,12 +1,21 @@
-<script setup>
-import MainPage from './components/MainPage.vue'
-import HeaderMenu from './components/Header.vue'
-</script>
-
 <template>
-    <div class="main-app">
-      <HeaderMenu /> 
-      <router-view />
-    </div>
+  <div id="main-app">
+    <AppHeader />
+    <router-view />
+    <AppFooter />
+  </div>
 </template>
- 
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import AppHeader from './components/layout/AppHeader.vue';
+import AppFooter from './components/layout/AppFooter.vue';
+
+export default defineComponent({
+  name: 'App',
+  components: {
+    AppFooter,
+    AppHeader
+  },
+})
+</script>

@@ -1,19 +1,37 @@
+import {
+    createRouter,
+    createWebHistory
+} from 'vue-router';
+import Home from '../views/Home.vue';
+import About from '../views/About.vue';
+import Shop from '../views/Shop.vue';
+import Cart from '../views/Cart.vue';
 
-import { createRouter, createWebHistory } from 'vue-router';
-import MainPage from '../components/MainPage.vue';
-import AboutComponent from '../components/AboutComponent.vue';
-import ShopsComponent from '../components/ShopsComponent.vue';
-
-
-const routes = [
-  { path: '/', name: 'Home', component: MainPage },
-  { path: '/about', name: 'About', component: AboutComponent },
-   { path: '/shops', name: 'Shops', component: ShopsComponent },
+const routes = [{
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: About
+    },
+    {
+        path: '/shops',
+        name: 'Shops',
+        component: Shop
+    },
+    {
+        path: '/cart',
+        name: 'Cart',
+        component: Cart
+    },
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+    history: createWebHistory(),
+    routes,
 });
 
 export default router;
