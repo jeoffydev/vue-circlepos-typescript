@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted, ref } from 'vue';
+import { defineComponent, computed, onMounted } from 'vue';
 import ContentWrapper from '../components/layout/AppContent.vue';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
