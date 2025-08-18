@@ -1,7 +1,7 @@
 <template>
   <section :id="`page-content-${classPage}`">
     <div class="title-wrapper">
-      <h1>{{ title }}</h1>
+      <h1 class="page-title">{{ title }}</h1>
     </div>
     <div class="wrapper-content">
       <slot></slot>
@@ -46,6 +46,9 @@ export default defineComponent({
   display: flex;
   padding: 0.5rem;
   margin-top: v-bind(marginTop);
+}
+.page-title {
+  margin-bottom: 1rem;
 }
 .wrapper-content {
   padding: 0.5rem;

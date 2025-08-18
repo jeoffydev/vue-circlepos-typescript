@@ -3,23 +3,79 @@
     <div class="home-banner">
       <div class="banner-content">
         <h1 class="banner-title stylish-title">Read and Learn!</h1>
+        <p><button @click="navigateToPage">Shop Now!</button></p>
       </div>
     </div>
     <ContentWrapper title="Featured Books" marginTop="0" classPage="homePage">
-      <p>This is the homepage</p>
+      <div v-if="isLoading">
+        <p>Loading books...</p>
+      </div>
+      <div v-else>
+        <AppBookGrid :books="books" />
+      </div>
     </ContentWrapper>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed, onMounted, ref } from 'vue';
 import ContentWrapper from '../components/layout/AppContent.vue';
+import { useRouter } from 'vue-router';
+import { storeToRefs } from 'pinia';
+import { useBooksStore } from '../stores/books';
+import type { IBook } from '../types/book.types';
+import AppBookGrid from '../components/ui/AppBookGrid.vue';
 
 export default defineComponent({
-    name: 'Home',
-    components: {
-        ContentWrapper
-    }
+  name: 'Home',
+  components: {
+    ContentWrapper,
+    AppBookGrid
+  },
+  setup() {
+    // Router setup
+    const router = useRouter();
+    const booksStore = useBooksStore();
+    const { books, selectedBook, loading, error, totalBooks, isLoading } = storeToRefs(booksStore);
+
+    const featuredBooks = computed(() => {
+      return books.value.slice(0, 6);
+    });
+
+    // Methods
+    const navigateToPage = () => {
+      router.push('/shops');
+    };
+
+    const selectBook = (book: IBook) => {
+      booksStore.setSelectedBook(book);
+    };
+
+    // Lifecycle hooks
+    onMounted(async () => {
+      if (books.value.length === 0 && !isLoading.value) {
+        try {
+          await booksStore.fetchBooks();
+        } catch (err) {
+            console.error('Failed to fetch books in Home component:', err);
+        }
+      } else {
+          console.log('Books already loaded or loading:', books.value.length);
+      }
+    });
+
+    return {
+      books,
+      selectedBook,
+      loading,
+      error,
+      totalBooks,
+      isLoading,
+      featuredBooks,
+      navigateToPage,
+      selectBook,
+    };
+  }
 });
 </script>
 
@@ -43,6 +99,11 @@ main {
 .banner-content h1 {
   background-color: #646cff;
   color: white;
-  margin-left: 2rem;
+}
+.home-banner button {
+  background-color: #323232;
+}
+.banner-content {
+  padding-left: 2rem;
 }
 </style>

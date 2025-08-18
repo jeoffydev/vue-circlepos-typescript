@@ -1,7 +1,4 @@
-export interface IMenuState {
-  isMenuOpen: boolean;
-  isDropdownOpen: boolean;
-}
+import type { IMenuState } from "../types/menu.types";
 
 export const createMenuHelpers = (state: IMenuState) => {
   const closeMenu = () => {
