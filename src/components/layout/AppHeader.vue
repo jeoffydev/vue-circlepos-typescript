@@ -10,13 +10,8 @@
         <div class="logo-text"><span>Jeoffy's Bookshop</span></div>
         <div class="desktop-menu">
           <ul class="nav-menu" :class="{ active: isMenuOpen }">
-            <li><router-link to="/">Home</router-link></li>
-            <li><router-link to="/shops">Bookshop</router-link></li>
-            <li><router-link to="/about">About</router-link></li>
-            <li class="nav-right">
-              <router-link to="/cart"
-                >My Cart <span class="cart-badge">2</span></router-link
-              >
+            <li v-for="item in menuItems" :key="item.id">
+              <router-link :to="item.to">{{ item.label }}</router-link>
             </li>
           </ul>
         </div>
@@ -34,6 +29,7 @@
  import { defineComponent } from 'vue';
 import logoUrl from '../../assets/logo.png';
 import { createMenuHelpers } from '../../helpers/menu';
+import { menuItems } from '../../config/header-menu';
 
  export default defineComponent({
    name: 'AppHeader',
@@ -43,6 +39,7 @@ import { createMenuHelpers } from '../../helpers/menu';
        isDropdownOpen: false,
        logoUrl,
        cleanupClickOutside: null as (() => void) | null,
+       menuItems
      }
    },
    created() {

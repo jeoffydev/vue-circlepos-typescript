@@ -7,8 +7,23 @@ The server provides an API for the application's core operations, as well as a S
     - assets/ where images folder
     - components/ 
         - layout/ where the common elements are ex. header, footer 
+        - ui/ This is where the small components like cards, button etc
     - views/  where the page components are
     - router/ where the vueJs route urls
+
+# Best practices for VueJS
+    - Project and file structures to organize
+    - Naming conventions
+    - Create unit test
+    - Define clear interfaces (Typescript)
+    - Use computed hooks when states are calculated (useMemo im comparison to reactJs)
+    - proper cleanup
+    - use keys for mapping/for loop
+    - descriptive Functions and event handlers
+    - Use proper state management like Pinia
+    - Error handling and validation
+    - if heavy data use v-memo
+    - implement lazy loading and only show the data that user needs in the browser
 
 ## Getting Started
 

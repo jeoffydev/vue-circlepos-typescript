@@ -11,8 +11,12 @@
         <p>Loading books...</p>
       </div>
       <div v-else>
-        <AppBookGrid :books="books" />
+        <AppBookGrid :books="featuredBooks" />
       </div>
+      <div v-if="error">
+        <p>No books available.</p>
+      </div>
+      <div class="text-center bottom"><button @click="navigateToPage" > See all books! </button></div>
     </ContentWrapper>
   </section>
 </template>
@@ -23,7 +27,6 @@ import ContentWrapper from '../components/layout/AppContent.vue';
 import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useBooksStore } from '../stores/books';
-import type { IBook } from '../types/book.types';
 import AppBookGrid from '../components/ui/AppBookGrid.vue';
 
 export default defineComponent({
@@ -36,7 +39,7 @@ export default defineComponent({
     // Router setup
     const router = useRouter();
     const booksStore = useBooksStore();
-    const { books, selectedBook, loading, error, totalBooks, isLoading } = storeToRefs(booksStore);
+    const { books, loading, error, isLoading } = storeToRefs(booksStore);
 
     const featuredBooks = computed(() => {
       return books.value.slice(0, 6);
@@ -45,10 +48,6 @@ export default defineComponent({
     // Methods
     const navigateToPage = () => {
       router.push('/shops');
-    };
-
-    const selectBook = (book: IBook) => {
-      booksStore.setSelectedBook(book);
     };
 
     // Lifecycle hooks
@@ -66,14 +65,11 @@ export default defineComponent({
 
     return {
       books,
-      selectedBook,
       loading,
       error,
-      totalBooks,
       isLoading,
       featuredBooks,
       navigateToPage,
-      selectBook,
     };
   }
 });
@@ -99,11 +95,15 @@ main {
 .banner-content h1 {
   background-color: #646cff;
   color: white;
+  font-style: italic;
 }
 .home-banner button {
   background-color: #323232;
 }
 .banner-content {
   padding-left: 2rem;
+}
+.bottom {
+  margin: 2rem 0;
 }
 </style>

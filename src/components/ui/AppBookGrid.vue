@@ -58,4 +58,8 @@ export default defineComponent({
     border-radius: 0.2rem;
     background-color: #f6f6f6;
 }
+.book-card:hover {
+  background-color: #535bf2;
+  color: white;
+}
 </style>

@@ -45,6 +45,11 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+h3.book-title {
+  margin-top: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 1.8rem;
+}
 
 button {
   border-radius: 0;
@@ -82,6 +87,10 @@ button:focus-visible {
   font-family: "Barlow Condensed", sans-serif;
   font-weight: 100;
   font-style: normal;
+}
+
+.text-center {
+  text-align: center;
 }
 
 @media (prefers-color-scheme: light) {
