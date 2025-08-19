@@ -8,17 +8,10 @@ interface MockMenuState extends IMenuState {
 }
 
 describe('createMenuHelpers', () => {
- 
   let menuElement: HTMLElement
   let outsideElement: HTMLElement
 
   beforeEach(() => {
-     let mockState: MockMenuState
-    // Reset the mock state before each test
-    mockState = {
-      isMenuOpen: false,
-      isDropdownOpen: false
-    }
 
     // Create mock DOM elements
     menuElement = document.createElement('div')
