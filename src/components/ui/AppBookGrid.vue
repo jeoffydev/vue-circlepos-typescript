@@ -5,7 +5,7 @@
       <div class="book-info">
         <p class="book-author">{{ DETAILS_TEXT.AUTHOR }}: {{ book.author }}</p>
         <p class="book-price">${{ book.price }}</p>
-        <button class="add-to-cart-btn" @click="navigateToPage(book.id)">
+        <button class="add-to-cart-btn" @click="navigateToPage(book.id)" :id="`book-btn-view-${book.id}`">
           {{ BUTTON_TEXT.VIEW_DETAILS  }}
         </button>
       </div>
