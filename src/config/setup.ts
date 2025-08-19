@@ -1,5 +1,5 @@
 
-// src/test/setup.ts
+// src/config/setup.ts
 import { vi } from 'vitest'
 
 // Mock console methods to avoid noise in tests

@@ -1,6 +1,18 @@
 <template>
   <ContentWrapper title="About Us" classPage="aboutPage">
-    <p>TESTING</p>
+    <article class="about-content">
+      <p>
+        We believe local bookstores are essential community hubs that foster
+        culture, curiosity, and a love of reading, and we're committed to
+        helping them thrive.
+      </p>
+      <p>
+        Every purchase on the site financially supports independent bookstores.
+        Our platform gives independent bookstores tools to compete online and
+        financial support to help them maintain their presence in local
+        communities.
+      </p>
+    </article>
   </ContentWrapper>
 </template>
 
@@ -15,3 +27,9 @@ export default defineComponent({
     }
 });
 </script>
+<style scoped>
+.about-content {
+  padding: 1rem;
+  border: 1px solid #e5e5e5;
+}
+</style>
