@@ -3,6 +3,9 @@
      <div v-if="isLoading">
         <p class="text-center">{{  STORE_TEXT.LOADING  }}</p>
       </div>
+      <div v-else-if="error"> 
+         <p class="text-center">{{  STORE_TEXT.NO_BOOKS_AVAILABLE  }}</p>
+      </div>
       <div v-else> 
         <AppSingleBookGrid :book="selectedBook" />
       </div>
@@ -30,7 +33,8 @@ export default defineComponent({
     const booksStore = useBooksStore();
     const {
       selectedBook,
-      isLoading
+      isLoading,
+      error
     } = storeToRefs(booksStore);
 
     onMounted(async () => {
@@ -50,6 +54,7 @@ export default defineComponent({
     return {
       selectedBook,
       isLoading,
+      error,
       STORE_TEXT,
       BUTTON_TEXT,
       PAGE_TEXT

@@ -50,13 +50,11 @@ export default defineComponent({
       purchasedBook,
     } = storeToRefs(booksStore);
 
-    let imgId = undefined;
     const getImageUrl = (id: number) => {
       const imgLength = bookUrl.length;
       const imgId = id >= imgLength ? 0 : id;
       return bookUrl[imgId];
     };
-    imgId = getImageUrl(props.book?.id as number);
 
     const purchaseBook = async () => {
       // Cleanup the purchasedBook
@@ -72,7 +70,7 @@ export default defineComponent({
 
     return {
       book: props.book,
-      bookUrl: imgId,
+      bookUrl: getImageUrl(props.book?.id as number),
       BUTTON_TEXT,
       DETAILS_TEXT,
       purchaseBook,

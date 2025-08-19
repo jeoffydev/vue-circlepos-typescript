@@ -11,6 +11,11 @@ The server provides an API for the application's core operations, as well as a S
     - views/  where the page components are
     - router/ where the vueJs route urls
 
+# Unit tests
+    - src/tests/
+        books 
+        menu
+
 # Best practices for VueJS
     - Project and file structures to organize
     - Naming conventions

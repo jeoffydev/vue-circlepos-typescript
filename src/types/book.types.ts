@@ -9,12 +9,12 @@ export interface IBook {
   isbn?: string;
   publishedYear?: number; // optional
   imageUrl?: string; //for future image 
-  availableStock?: boolean;
+  availableStock?: number;
 }
 
 export interface IBookDetail {
   book: IBook;
-  message: string;
+  message?: string;
 }
 
 export interface IBooksState {
