@@ -2,21 +2,21 @@
   <section class="hero" id="home">
     <div class="home-banner">
       <div class="banner-content">
-        <h1 class="banner-title stylish-title">Read and Learn!</h1>
-        <p><button @click="navigateToPage">Shop Now!</button></p>
+        <h1 class="banner-title stylish-title">{{ STORE_TEXT.READ_LEARN }}</h1>
+        <p><button @click="navigateToPage">{{ BUTTON_TEXT.SHOP_NOW }}</button></p>
       </div>
     </div>
-    <ContentWrapper title="Featured Books" marginTop="0" classPage="homePage">
+    <ContentWrapper :title="PAGE_TEXT.FEATURED_BOOKS" marginTop="0" classPage="homePage">
       <div v-if="isLoading">
-        <p>Loading books...</p>
+        <p class="text-center">{{ STORE_TEXT.LOADING }}</p>
       </div>
       <div v-else>
         <AppBookGrid :books="featuredBooks" />
       </div>
       <div v-if="error">
-        <p>No books available.</p>
+        <p class="text-center">{{  STORE_TEXT.NO_BOOKS_AVAILABLE  }}</p>
       </div>
-      <div class="text-center bottom"><button @click="navigateToPage" > See all books! </button></div>
+      <div class="text-center bottom"><button @click="navigateToPage" > {{  BUTTON_TEXT.SEE_ALL_BOOKS  }} </button></div>
     </ContentWrapper>
   </section>
 </template>
@@ -28,6 +28,7 @@ import { useRouter } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { useBooksStore } from '../stores/books';
 import AppBookGrid from '../components/ui/AppBookGrid.vue';
+import { STORE_TEXT, BUTTON_TEXT, PAGE_TEXT } from '../constants/text'
 
 export default defineComponent({
   name: 'Home',
@@ -39,17 +40,15 @@ export default defineComponent({
     // Router setup
     const router = useRouter();
     const booksStore = useBooksStore();
-    const { books, loading, error, isLoading } = storeToRefs(booksStore);
+    const { books, error, isLoading } = storeToRefs(booksStore);
 
     const featuredBooks = computed(() => {
       return books.value.slice(0, 6);
     });
-
     // Methods
     const navigateToPage = () => {
       router.push('/shops');
     };
-
     // Lifecycle hooks
     onMounted(async () => {
       if (books.value.length === 0 && !isLoading.value) {
@@ -58,18 +57,18 @@ export default defineComponent({
         } catch (err) {
             console.error('Failed to fetch books in Home component:', err);
         }
-      } else {
-          console.log('Books already loaded or loading:', books.value.length);
-      }
+      } 
     });
 
     return {
       books,
-      loading,
       error,
       isLoading,
       featuredBooks,
       navigateToPage,
+      STORE_TEXT,
+      BUTTON_TEXT,
+      PAGE_TEXT
     };
   }
 });

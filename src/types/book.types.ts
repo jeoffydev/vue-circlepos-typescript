@@ -3,17 +3,18 @@ export interface IBook {
   id: number;
   title: string;
   author: string;
-  description?: string;
+  description?: string; // optional
   price?: number;
-  category?: string;
+  category?: string; // optional
   isbn?: string;
-  publishedYear?: number;
-  imageUrl?: string;
-  inStock?: boolean;
+  publishedYear?: number; // optional
+  imageUrl?: string; //for future image 
+  availableStock?: boolean;
 }
 
 export interface IBookDetail {
   book: IBook;
+  message: string;
 }
 
 export interface IBooksState {
@@ -23,4 +24,5 @@ export interface IBooksState {
   error: string | null;
   currentPage: number;
   totalPages: number;
+  purchasedBook: IBookDetail | null;
 }

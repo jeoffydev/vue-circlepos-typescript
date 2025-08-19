@@ -1,5 +1,5 @@
 <template>
-  <section :id="`page-content-${classPage}`">
+  <section :id="`page-content-${classPage}`" class="body-content">
     <div class="title-wrapper">
       <h1 class="page-title">{{ title }}</h1>
     </div>
@@ -49,11 +49,15 @@ export default defineComponent({
 }
 .page-title {
   margin-bottom: 1rem;
+  margin-left:0.7rem;
 }
 .wrapper-content {
   padding: 0.5rem;
 }
 .page {
   padding: 0.5rem;
+}
+.body-content {
+  min-height: 100vh;
 }
 </style>

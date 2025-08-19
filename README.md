@@ -17,7 +17,7 @@ The server provides an API for the application's core operations, as well as a S
     - Create unit test
     - Define clear interfaces (Typescript)
     - Use computed hooks when states are calculated (useMemo im comparison to reactJs)
-    - proper cleanup
+    - proper cleanup (unmounting) 
     - use keys for mapping/for loop
     - descriptive Functions and event handlers
     - Use proper state management like Pinia

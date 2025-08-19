@@ -5,7 +5,6 @@ import {
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Shop from '../views/Shop.vue';
-import Cart from '../views/Cart.vue';
 import BookDetail from '../views/BookDetail.vue';
 
 const routes = [{
@@ -22,11 +21,6 @@ const routes = [{
         path: '/shops',
         name: 'Shops',
         component: Shop
-    },
-    {
-        path: '/cart',
-        name: 'Cart',
-        component: Cart
     },
     {
         path: '/book/:id',
