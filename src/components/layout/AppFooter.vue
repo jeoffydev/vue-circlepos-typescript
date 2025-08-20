@@ -1,6 +1,6 @@
 <template>
-  <footer class="footer">
-    <section class="footer-description">
+  <footer class="text-center bg-gradient-to-br from-slate-700 to-slate-600 text-gray-100 mt-auto p-2">
+    <section class="leading-relaxed mb-6 text-gray-300">
        <p>{{ PAGE_TEXT.FOOTER_TEXT }}</p>
     </section>
   </footer>
@@ -21,17 +21,4 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
-.footer {
-  text-align: center;
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  color: #ecf0f1;
-  margin-top: auto;
-  padding: 0.5rem;
-}
-.footer-description {
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  color: #bdc3c7;
-}
-</style>
+

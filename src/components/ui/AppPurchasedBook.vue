@@ -1,23 +1,23 @@
 <template>
-  <section class="books-grid">
-    <article class="book-card">
-      <div class="book-section">
-        <h3 class="msg">
-          <span><i class="fas fa-check"></i></span> {{ message }}
+  <section class="block p-4 text-gray-700">
+    <article class="flex flex-wrap justify-center items-stretch gap-1 p-5 border border-gray-400 rounded-sm bg-gray-100 text-center">
+      <div class="flex-1 min-w-[300px]">
+        <h3 class="mb-8">
+          <span class="inline-block p-2 rounded-full bg-green-500 relative top-1 mr-4"><i class="fas fa-check text-3xl text-white"></i></span> {{ message }}
         </h3>
-        <div class="book-info">
+        <div>
           <h3 class="book-title">
             {{ book?.title
 
-            }}<small>{{ DETAILS_TEXT.AUTHOR }}: {{ book?.author }}</small>
+            }}<small class="block font-sans italic text-sm">{{ DETAILS_TEXT.AUTHOR }}: {{ book?.author }}</small>
           </h3>
-          <ul>
-            <li class="book-author">
+          <ul class="block m-0 p-0">
+            <li class="list-none">
               {{ DETAILS_TEXT.ISBN }}: {{ book?.isbn }}
             </li>
           </ul>
           <p>
-            <button class="buyBtn" @click="navigateToPage">
+            <button class="m-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors" @click="navigateToPage">
               {{ BUTTON_TEXT.CONTINUE_SHOPPING }}
             </button>
           </p>
@@ -70,62 +70,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style scoped>
-.books-grid {
-  display: block;
-  padding: 1rem;
-}
-.book-card {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  gap: 0.2rem;
-  padding: 1.3rem;
-  border: 1px solid #bebebe;
-  border-radius: 0.2rem;
-  background-color: #f6f6f6;
-  text-align: center;
-}
-.msg span {
-  display: inline-block;
-  padding: 0.6rem;
-  border-radius: 50%;
-  background-color: green;
-  position: relative;
-  top: 0.2rem;
-  margin-right: 1rem;
-}
-.msg i {
-  font-size: 1.7rem;
-  color: white;
-}
-
-.book-title small {
-  display: block;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-style: italic;
-  font-size: 0.8rem;
-}
-.book-section {
-  flex: 1 1 300px;
-}
-.price {
-  display: inline-block;
-  padding: 0.3rem;
-  font-size: 2rem;
-  background-color: #ffdca5;
-}
-.book-info ul {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-.book-info ul li {
-  list-style-type: none;
-}
-.book-availability {
-  margin-bottom: 1rem;
-}
-</style>

@@ -1,9 +1,9 @@
 <template>
-  <section :id="`page-content-${classPage}`" class="body-content">
-    <div class="title-wrapper">
-      <h1 class="page-title">{{ title }}</h1>
+  <section :id="`page-content-${classPage}`" class="min-h-screen">
+    <div class="flex p-2" :style="{ marginTop: marginTop }">
+      <h1 class="mb-4 ml-3">{{ title }}</h1>
     </div>
-    <div class="wrapper-content">
+    <div class="p-2">
       <slot></slot>
     </div>
   </section>
@@ -23,7 +23,7 @@ export default defineComponent({
     marginTop: {
       type: String,
       required: false,
-      default: '2rem'
+      default: '4.5rem'
     },
     classPage: {
       type: String,
@@ -40,24 +40,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-.title-wrapper {
-  display: flex;
-  padding: 0.5rem;
-  margin-top: v-bind(marginTop);
-}
-.page-title {
-  margin-bottom: 1rem;
-  margin-left:0.7rem;
-}
-.wrapper-content {
-  padding: 0.5rem;
-}
-.page {
-  padding: 0.5rem;
-}
-.body-content {
-  min-height: 100vh;
-}
-</style>
