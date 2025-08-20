@@ -1,11 +1,11 @@
 <template>
-  <section class="books-grid">
-    <article v-for="book in books" :key="book.id" class="book-card">
-      <h3 class="book-title">{{ book.title }}</h3>
-      <div class="book-info">
-        <p class="book-author">{{ DETAILS_TEXT.AUTHOR }}: {{ book.author }}</p>
-        <p class="book-price">${{ book.price }}</p>
-        <button class="add-to-cart-btn" @click="navigateToPage(book.id)" :id="`book-btn-view-${book.id}`">
+  <section class="flex flex-wrap gap-6 p-4 justify-start items-stretch text-gray-700">
+    <article v-for="book in books" :key="book.id" class="p-5 flex-1 min-w-[300px] border border-gray-300 rounded-sm bg-gray-100 hover:bg-indigo-500 hover:text-white">
+      <h3 class="mt-0 mb-4 page-title">{{ book.title }}</h3>
+      <div>
+        <p>{{ DETAILS_TEXT.AUTHOR }}: {{ book.author }}</p>
+        <p><span class="font-bold">${{ book.price }}</span></p>
+        <button class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors" @click="navigateToPage(book.id)" :id="`book-btn-view-${book.id}`">
           {{ BUTTON_TEXT.VIEW_DETAILS  }}
         </button>
       </div>
@@ -51,29 +51,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-.books-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  padding: 1rem;
-  justify-content: flex-start;
-  align-items: stretch;
-}
-.book-card {
-  padding: 1.3rem;
-  flex: 1 1 300px;
-  border: 1px solid #e5e5e5;
-  border-radius: 0.2rem;
-  background-color: #f6f6f6;
-}
-.book-card:hover {
-  background-color: #535bf2;
-  color: white;
-}
-.book-title {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-</style>

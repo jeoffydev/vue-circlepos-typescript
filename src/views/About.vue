@@ -1,6 +1,6 @@
 <template>
   <ContentWrapper title="About Us" classPage="aboutPage">
-    <article class="about-content">
+    <article class="p-4 border border-gray-300">
       <p>
         We believe local bookstores are essential community hubs that foster
         culture, curiosity, and a love of reading, and we're committed to
@@ -27,9 +27,3 @@ export default defineComponent({
   }
 });
 </script>
-<style scoped>
-.about-content {
-  padding: 1rem;
-  border: 1px solid #e5e5e5;
-}
-</style>

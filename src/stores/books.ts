@@ -55,10 +55,6 @@ export const useBooksStore = defineStore('books', {
         this.loading = false;
       }
     },
-
-
-
-    
     async fetchBookById(id: number): Promise < IBookDetail | null > {
       this.loading = true;
       this.error = null;

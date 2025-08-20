@@ -1,6 +1,7 @@
 <template>
   <ContentWrapper :title="PAGE_TEXT.BOOKSHOP" classPage="shopPage">
-    <div class="home-banner"></div>
+    <div class="h-screen max-h-[200px] w-full relative flex items-center justify-start bg-cover bg-center bg-no-repeat bg-fixed"
+      style="background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"></div>
     <div v-if="isLoading">
       <p class="text-center"> {{ STORE_TEXT.LOADING  }}</p>
     </div>
@@ -63,20 +64,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.home-banner {
-  height: 100vh;
-  max-height: 200px;
-  width: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  background-image: url("https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-</style>
