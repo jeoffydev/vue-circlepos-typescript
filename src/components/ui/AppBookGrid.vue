@@ -72,4 +72,8 @@ export default defineComponent({
   background-color: #535bf2;
   color: white;
 }
+.book-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
 </style>
