@@ -13,31 +13,31 @@
 import { defineComponent  } from 'vue';
 
 export default defineComponent({
-    name: 'AppContent',
-    props: {
-        title: {
-            type: String,
-            required: false,
-            default: 'Default Title'
-        },
-        marginTop: {
-            type: String,
-            required: false,
-            default: '2rem'
-        },
-        classPage: {
-            type: String,
-            required: true,
-            default: 'insidePage'
-        }
+  name: 'AppContent',
+  props: {
+    title: {
+      type: String,
+      required: false,
+      default: 'Default Title'
     },
-    setup(props) {
-        return {
-            title: props.title,
-            marginTop: props.marginTop,
-            classPage: props.classPage
-        }
+    marginTop: {
+      type: String,
+      required: false,
+      default: '2rem'
     },
+    classPage: {
+      type: String,
+      required: true,
+      default: 'insidePage'
+    }
+  },
+  setup(props) {
+    return {
+      title: props.title,
+      marginTop: props.marginTop,
+      classPage: props.classPage
+    }
+  },
 })
 </script>
 

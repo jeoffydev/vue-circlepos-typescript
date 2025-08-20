@@ -37,7 +37,6 @@ export default defineComponent({
     AppBookGrid
   },
   setup() {
-    // Router setup
     const router = useRouter();
     const booksStore = useBooksStore();
     const { books, error, isLoading } = storeToRefs(booksStore);
@@ -45,17 +44,15 @@ export default defineComponent({
     const featuredBooks = computed(() => {
       return books.value.slice(0, 6);
     });
-    // Methods
     const navigateToPage = () => {
       router.push('/shops');
     };
-    // Lifecycle hooks
     onMounted(async () => {
       if (books.value.length === 0 && !isLoading.value) {
         try {
           await booksStore.fetchBooks();
         } catch (err) {
-            console.error('Failed to fetch books in Home component:', err);
+          booksStore.error = `Failed to fetch books in Home component: ${err}`;
         }
       } 
     });

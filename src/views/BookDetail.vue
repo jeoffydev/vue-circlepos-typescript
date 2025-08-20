@@ -1,14 +1,14 @@
 <template>
   <ContentWrapper :title="PAGE_TEXT.BOOK_DETAILS" classPage="bookDetailPage">
-     <div v-if="isLoading">
-        <p class="text-center">{{  STORE_TEXT.LOADING  }}</p>
-      </div>
-      <div v-else-if="error"> 
-         <p class="text-center">{{  STORE_TEXT.NO_BOOKS_AVAILABLE  }}</p>
-      </div>
-      <div v-else> 
-        <AppSingleBookGrid :book="selectedBook" />
-      </div>
+    <div v-if="isLoading">
+      <p class="text-center">{{  STORE_TEXT.LOADING  }}</p>
+    </div>
+    <div v-else-if="error">
+      <p class="text-center">{{  STORE_TEXT.NO_BOOKS_AVAILABLE  }}</p>
+    </div>
+    <div v-else>
+      <AppSingleBookGrid :book="selectedBook" />
+    </div>
   </ContentWrapper>
 </template>
 
@@ -29,7 +29,6 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute();
-    //get ID in route route.params.id
     const booksStore = useBooksStore();
     const {
       selectedBook,
@@ -38,15 +37,13 @@ export default defineComponent({
     } = storeToRefs(booksStore);
 
     onMounted(async () => {
-      //cleanup the selectedBooks
       booksStore.clearSelectedBook();
-      //Clear the purchased book
       booksStore.clearPurchasedBook();
       if (route.params.id) {
         try {
           await booksStore.fetchBookById(parseInt(route.params.id as string));
         } catch (err) {
-          console.error('Failed to fetch this book', err);
+          booksStore.error = `Failed to fetch this book - ${err}`;
         }
       }
     });

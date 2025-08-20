@@ -50,22 +50,22 @@ export default defineComponent({
       default: null
     },
     message: {
-        type: String,
+      type: String,
       required: false,
       default: ''
     }
   },
-  setup(props){
-     const router = useRouter();
+  setup(props) {
+    const router = useRouter();
     const navigateToPage = () => {
       router.push('/shops');
     };
-    return{
-        book: props.book,
-        bookUrl: props.message,
-        BUTTON_TEXT,
-        DETAILS_TEXT,
-        navigateToPage
+    return {
+      book: props.book,
+      bookUrl: props.message,
+      BUTTON_TEXT,
+      DETAILS_TEXT,
+      navigateToPage
     }
   }
 })

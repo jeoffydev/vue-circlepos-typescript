@@ -5,6 +5,9 @@
       :message="purchasedBook.message"
     />
   </div>
+  <div v-else-if="error">
+      <p class="text-center">{{  STORE_TEXT.NO_BOOKS_AVAILABLE  }}</p>
+  </div>
   <div v-else>
     <app-book-info :book="book" @purchase="purchaseBook" :book-url="bookUrl" />
   </div>
@@ -23,7 +26,8 @@ import {
 } from '../../constants/book-images';
 import {
   BUTTON_TEXT,
-  DETAILS_TEXT
+  DETAILS_TEXT,
+  STORE_TEXT
 } from '../../constants/text'
 import { useBooksStore } from '../../stores/books';
 import { storeToRefs } from 'pinia';
@@ -48,6 +52,7 @@ export default defineComponent({
     const booksStore = useBooksStore();
     const {
       purchasedBook,
+      error
     } = storeToRefs(booksStore);
 
     const getImageUrl = (id: number) => {
@@ -57,13 +62,12 @@ export default defineComponent({
     };
 
     const purchaseBook = async () => {
-      // Cleanup the purchasedBook
       booksStore.clearPurchasedBook();
       if (props.book?.id) {
         try {
           await booksStore.purchaseBookById(props.book?.id);
         } catch (err) {
-          console.error('Failed to purchase this book', err);
+          booksStore.error = `Failed to purchase this book - ${err}`;
         }
       }
     };
@@ -73,8 +77,10 @@ export default defineComponent({
       bookUrl: getImageUrl(props.book?.id as number),
       BUTTON_TEXT,
       DETAILS_TEXT,
+      STORE_TEXT,
       purchaseBook,
-      purchasedBook
+      purchasedBook,
+      error
     }
   },
 })

@@ -37,18 +37,16 @@ export default defineComponent({
       isLoading
     } = storeToRefs(booksStore);
 
-    // Methods to details
     const navigateToPage = () => {
       router.push('/shops');
     };
 
-    // Lifecycle hooks
     onMounted(async () => {
       if (books.value.length === 0 && !isLoading.value) {
         try {
           await booksStore.fetchBooks();
         } catch (err) {
-          console.error('Failed to fetch books in Shop component:', err);
+          booksStore.error = `Failed to fetch books in Shop component: ${err}`;
         }
       }
     });
