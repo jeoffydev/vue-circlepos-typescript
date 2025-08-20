@@ -59,24 +59,24 @@ export default defineComponent({
       default: null
     },
     bookUrl: {
-        type: String,
+      type: String,
       required: false,
       default: ''
     }
   },
   emits: ['purchase'],
-  setup(props, { emit }){
+  setup(props, { emit }) {
     const handlePurchase = () => {
       if (props.book?.id) {
         emit('purchase', props.book.id);
       }
     };
-    return{
-        book: props.book,
-        bookUrl: props.bookUrl,
-        BUTTON_TEXT,
-        DETAILS_TEXT,
-        handlePurchase
+    return {
+      book: props.book,
+      bookUrl: props.bookUrl,
+      BUTTON_TEXT,
+      DETAILS_TEXT,
+      handlePurchase
     }
   }
 })

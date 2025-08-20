@@ -1,13 +1,13 @@
 <template>
   <header class="header">
     <nav class="navbar">
-      <div class="nav-container">
+      <div class="nav-container" ref="navContainerRef">
         <div class="nav-logo">
           <a href="/" class="nav-logo-link">
             <img alt="Jeoffys logo" class="logo" :src="logoUrl" />
           </a>
         </div>
-        <div class="logo-text"><span>Jeoffy's Bookshop</span></div>
+        <div class="logo-text"><span>{{ PAGE_TEXT.SITE_NAME }}</span></div>
         <div class="desktop-menu">
           <ul class="nav-menu" :class="{ active: isMenuOpen }">
             <li v-for="item in menuItems" :key="item.id">
@@ -25,45 +25,29 @@
   </header>
 </template>
 
-<script lang="ts">
- import { defineComponent } from 'vue';
-import logoUrl from '../../assets/logo.png';
-import { createMenuHelpers } from '../../helpers/menu';
-import { menuItems } from '../../config/header-menu';
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import logoUrl from '../../assets/logo.png'
+import { menuItems } from '../../config/header-menu'
+import { useMenu } from '../../composables/useMenu'
+import { PAGE_TEXT } from '../../constants/text'
 
- export default defineComponent({
-   name: 'AppHeader',
-   data() {
-     return {
-       isMenuOpen: false,
-       isDropdownOpen: false,
-       logoUrl,
-       cleanupClickOutside: null as (() => void) | null,
-       menuItems
-     }
-   },
-   created() {
-    const helpers = createMenuHelpers(this.$data);
-    Object.assign(this, helpers);
-  },
-   mounted() {
-    const helpers = createMenuHelpers(this.$data);
-    this.cleanupClickOutside = helpers.setupClickOutside(this.$el as HTMLElement);
-  },
-  methods: {
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-    }
-  },
-  beforeUnmount() {
-    if (this.cleanupClickOutside) {
-      this.cleanupClickOutside();
-    }
-     if (this.toggleMenu) {
-      this.toggleMenu();
-    }
+const navContainerRef = ref<HTMLElement | null>(null)
+
+const { isMenuOpen, closeMenu, toggleMenu, setupClickOutside } = useMenu()
+
+onMounted(() => {
+  if (navContainerRef.value) {
+    setupClickOutside(navContainerRef.value)
   }
- });
+})
+
+defineExpose({
+  isMenuOpen,
+  closeMenu,
+  toggleMenu,
+  PAGE_TEXT
+})
 </script>
 
 <style scoped>

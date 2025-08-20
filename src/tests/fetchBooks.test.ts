@@ -2,40 +2,36 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
 import { useBooksStore } from '../stores/books'
 import axios from 'axios'
-import type { IBook  } from '../types/book.types'
 
 vi.mock('axios', () => ({
   default: {
     create: vi.fn(() => ({
-      get: vi.fn(),
-      post: vi.fn()
+      get: vi.fn()
     })),
     isAxiosError: vi.fn()
   }
 }))
 
 const mockedAxios = axios as any
-const mockApiClient = {
-  get: vi.fn(),
-  post: vi.fn()
-}
-mockedAxios.create.mockReturnValue(mockApiClient)
 
-describe('useBooksStore - fetch all books -> fetchBooks()', () => {
+describe('fetchBooks', () => {
+  let mockApiClient: any
+
   beforeEach(() => {
     setActivePinia(createPinia())
     vi.clearAllMocks()
+    mockApiClient = { get: vi.fn() }
+    mockedAxios.create.mockReturnValue(mockApiClient)
   })
 
   it('should fetch books successfully', async () => {
-    const mockBooks: IBook[] = [
-      { id: 1, title: 'Book 1', author: 'Author 1', isbn: '1234', price: 10, availableStock: 10 },
-      { id: 2, title: 'Book 2', author: 'Author 2', isbn: '5678', price: 15, availableStock: 15 }
+    const mockBooks = [
+      { id: 1, title: 'Book 1', author: 'Author 1' },
+      { id: 2, title: 'Book 2', author: 'Author 2' }
     ]
 
     mockApiClient.get.mockResolvedValue({
-      status: 200,
-      data: mockBooks
+      data: { books: mockBooks }
     })
 
     const store = useBooksStore()

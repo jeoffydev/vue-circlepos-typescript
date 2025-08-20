@@ -19,8 +19,10 @@ export const DETAILS_TEXT = {
 } as const
 
 export const PAGE_TEXT = {
+  SITE_NAME: "Jeoffy's Bookshop",  
   FEATURED_BOOKS: 'Featured Books',
   BOOKSHOP: 'Book Shop',
   ABOUT_US: 'About Us',
-  BOOK_DETAILS: 'Book Details'
+  BOOK_DETAILS: 'Book Details',
+  FOOTER_TEXT: '© 2025 Jeoffys Bookshop. All rights reserved.'
 } as const

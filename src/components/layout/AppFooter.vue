@@ -1,16 +1,24 @@
 <template>
   <footer class="footer">
     <section class="footer-description">
-       <p>© 2025 Jeoffys Bookshop. All rights reserved.</p>
+       <p>{{ PAGE_TEXT.FOOTER_TEXT }}</p>
     </section>
   </footer>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import {
+  PAGE_TEXT
+} from '../../constants/text'
 
 export default defineComponent({
-    name: 'Footer',
+  name: 'Footer',
+  data() {
+    return {
+      PAGE_TEXT
+    }
+  },
 });
 </script>
 <style scoped>

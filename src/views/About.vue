@@ -21,10 +21,10 @@ import { defineComponent } from 'vue';
 import ContentWrapper from '../components/layout/AppContent.vue';
 
 export default defineComponent({
-    name: 'About',
-    components: {
-        ContentWrapper
-    }
+  name: 'About',
+  components: {
+    ContentWrapper
+  }
 });
 </script>
 <style scoped>
