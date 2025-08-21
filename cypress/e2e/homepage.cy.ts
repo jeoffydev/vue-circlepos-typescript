@@ -10,7 +10,11 @@ describe('Jeoffys Bookshop', () => {
     cy.wait('@getBooks')
     cy.contains(TEST_CONTENT.BOOKS.TITLE_1).should('be.visible')
     cy.contains(TEST_CONTENT.BOOKS.AUTHOR_1).should('be.visible')
-    cy.contains(TEST_CONTENT.BUTTONS.VIEW_DETAILS).should('have.attr', 'id', 'book-btn-view-1')
+    cy.contains(TEST_CONTENT.BUTTONS.VIEW_DETAILS).should(
+      'have.attr',
+      'id',
+      'book-btn-view-1'
+    )
   })
 
   it('should have Title Featured Books on the homepage', () => {
@@ -20,7 +24,7 @@ describe('Jeoffys Bookshop', () => {
 
   it('should have display 2 books', () => {
     cy.wait('@getBooks')
-     cy.get('article').should('have.length', 2)
+    cy.get('article').should('have.length', 2)
   })
 
   it('should have button to redirect to shop for all the books', () => {
@@ -34,5 +38,4 @@ describe('Jeoffys Bookshop', () => {
     cy.wait('@emptyBooks')
     cy.contains(TEST_CONTENT.MESSAGES.NO_BOOKS).should('be.visible')
   })
-
 })

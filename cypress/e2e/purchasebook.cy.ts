@@ -5,32 +5,32 @@ describe('Jeoffys Bookshop', () => {
     cy.intercept('GET', '**/books', { fixture: 'books.json' }).as('getBooks')
 
     cy.intercept('GET', '/books/1', {
-      body: { 
+      body: {
         book: {
-          id: 1, 
-          title: "Test Book 1", 
-          author: "Author 1", 
-          isbn: "1234", 
-          price: 10, 
+          id: 1,
+          title: 'Test Book 1',
+          author: 'Author 1',
+          isbn: '1234',
+          price: 10,
           availableStock: 10
-        },
+        }
       }
-    }).as('getBook1') 
+    }).as('getBook1')
 
     cy.intercept('POST', '/books/1/purchase', {
-      body: { 
+      body: {
         book: {
-          id: 1, 
-          title: "Test Book 1", 
-          author: "Author 1", 
-          isbn: "1234", 
-          price: 10, 
+          id: 1,
+          title: 'Test Book 1',
+          author: 'Author 1',
+          isbn: '1234',
+          price: 10,
           availableStock: 10
         },
-        message:"Purchase successful"
+        message: 'Purchase successful'
       }
-    }).as('postBook') 
-    
+    }).as('postBook')
+
     cy.visit('/')
   })
 
@@ -38,7 +38,7 @@ describe('Jeoffys Bookshop', () => {
     cy.wait('@getBooks')
     cy.contains(TEST_CONTENT.BOOKS.TITLE_1).should('be.visible')
     cy.get('#book-btn-view-1').click()
-    
+
     cy.url().should('include', '/book/1')
     cy.wait('@getBook1')
 
@@ -50,5 +50,4 @@ describe('Jeoffys Bookshop', () => {
     cy.contains(TEST_CONTENT.BOOKS.TITLE_1).should('be.visible')
     cy.contains(TEST_CONTENT.BUTTONS.CONTINUE_SHOPPING).should('be.visible')
   })
-  
 })

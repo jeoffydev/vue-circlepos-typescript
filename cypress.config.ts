@@ -1,4 +1,6 @@
-import { defineConfig } from 'cypress'
+import {
+  defineConfig
+} from 'cypress'
 
 export default defineConfig({
   e2e: {
@@ -12,7 +14,7 @@ export default defineConfig({
   component: {
     devServer: {
       framework: 'vue',
-      bundler: 'vite',
+      bundler: 'vite'
     },
     specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'cypress/support/component.ts'
