@@ -2,7 +2,8 @@
 
 The server provides an API for the application's core operations, as well as a Swagger endpoint for easy documentation. 
 - FE Demo - https://share.vidyard.com/watch/tor4yYhEK6udabGvowMoFh
-- BE: https://circlesoftware-be-4104a8d601d4.herokuapp.com/books
+- BE - https://circlesoftware-be-4104a8d601d4.herokuapp.com/books
+- E2E Test - https://share.vidyard.com/watch/3LdqrEhMammHo3TtEoxr7p 
 
 # Folder Structure
 - src/ The main source folder
@@ -17,7 +18,7 @@ The server provides an API for the application's core operations, as well as a S
     - src/tests/
         books 
         menu
-    - Demo - https://share.vidyard.com/watch/o32gWvjYdmX4sv8ZytiRax
+    - Demo - https://share.vidyard.com/watch/FqV8yUMeQks9bSQKyi88xV
 
 # Best practices for VueJS
     - Project and file structures to organize

@@ -21,17 +21,14 @@ describe('useMenu', () => {
 
   it('should open menu', () => {
     const { isMenuOpen, openMenu } = useMenu()
-    
     openMenu()
     expect(isMenuOpen.value).toBe(true)
   })
 
   it('should close menu', () => {
     const { isMenuOpen, openMenu, closeMenu } = useMenu()
-    
     openMenu()
     expect(isMenuOpen.value).toBe(true)
-    
     closeMenu()
     expect(isMenuOpen.value).toBe(false)
   })
